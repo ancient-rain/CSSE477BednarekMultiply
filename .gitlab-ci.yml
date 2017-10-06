@@ -1,0 +1,19 @@
+stages:
+  - build
+  - deploy
+
+BuildLibrary:
+  stage: build
+  script:
+    - ./gradlew build
+  tags:
+    - gradle
+
+DeployToMaven:
+  stage: deploy
+  script:
+    - ./gradlew publish
+  tags:
+    - gradle
+  only:
+    - tags
